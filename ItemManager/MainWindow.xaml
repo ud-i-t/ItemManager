@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <Grid.Resources>
+            <local:Items x:Key="items"/>
+        </Grid.Resources>
+        <ListBox ItemsSource="{StaticResource items}" HorizontalAlignment="Left" Height="299" Margin="10,10,0,0" VerticalAlignment="Top" Width="174" DisplayMemberPath="Name">
+        </ListBox>
     </Grid>
 </Window>
