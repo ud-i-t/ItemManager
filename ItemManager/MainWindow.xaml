@@ -5,12 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ItemManager"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="600" Width="800">
     <Grid>
-        <Grid.Resources>
-            <local:Items x:Key="items"/>
-        </Grid.Resources>
-        <ListBox ItemsSource="{StaticResource items}" HorizontalAlignment="Left" Height="299" Margin="10,10,0,0" VerticalAlignment="Top" Width="174" DisplayMemberPath="Name">
+        <ListBox Name="itemList" ItemsSource="{Binding ItemList}" HorizontalAlignment="Left" Height="549" Margin="10,10,0,0" 
+                 VerticalAlignment="Top" Width="174" DisplayMemberPath="ListName" IsSynchronizedWithCurrentItem="True">
         </ListBox>
+        <TabControl HorizontalAlignment="Left" Height="549" Margin="189,10,0,0" VerticalAlignment="Top" Width="593">
+            <TabItem Header="TabItem">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="TabItem">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="19*"/>
+                        <ColumnDefinition Width="129*"/>
+                    </Grid.ColumnDefinitions>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <TextBox HorizontalAlignment="Left" Height="158" Margin="204,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="556"
+                 AcceptsReturn="True" VerticalContentAlignment="Top" Text="{Binding ItemList/Name}"/>
     </Grid>
 </Window>
