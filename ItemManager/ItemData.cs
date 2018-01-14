@@ -23,9 +23,9 @@ namespace ItemManager
             set { return;  }
         }
 
-        public UserData Data { get; set; }
+        public Dictionary<string, string> Data { get; set; }
 
-        public Item(UserData data)
+        public Item(Dictionary<string, string> data)
         {
             Data = data;
         }
@@ -37,7 +37,7 @@ namespace ItemManager
     {
         public Items()
         {
-            var items = CSVReader.Parse(@"ItemData/item.csv");
+            var items = CSVReader.ParseToDic(@"ItemData/item.csv");
 
             foreach (var i in items)
             {

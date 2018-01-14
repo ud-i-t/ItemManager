@@ -24,6 +24,6 @@
             </TabItem>
         </TabControl>
         <TextBox HorizontalAlignment="Left" Height="158" Margin="204,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="556"
-                 AcceptsReturn="True" VerticalContentAlignment="Top" Text="{Binding ItemList/Name}"/>
+                 AcceptsReturn="True" VerticalContentAlignment="Top" Text="{Binding Path=ItemList/Data[name]}"/>
     </Grid>
 </Window>
