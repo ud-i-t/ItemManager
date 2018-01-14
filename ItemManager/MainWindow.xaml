@@ -12,7 +12,25 @@
         </ListBox>
         <TabControl HorizontalAlignment="Left" Height="549" Margin="189,10,0,0" VerticalAlignment="Top" Width="593">
             <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="ID"></TextBlock>
+                        <TextBlock Text="名前"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1">
+                        <TextBox HorizontalAlignment="Left" TextWrapping="NoWrap" VerticalAlignment="Top" Width="556" VerticalContentAlignment="Top" Text="{Binding Path=ItemList/Data[id]}"/>
+                        <TextBox HorizontalAlignment="Left" TextWrapping="NoWrap" VerticalAlignment="Top" Width="556" VerticalContentAlignment="Top" Text="{Binding Path=ItemList/Data[name]}"/>
+                    </StackPanel>
+                </Grid>
             </TabItem>
             <TabItem Header="TabItem">
                 <Grid Background="#FFE5E5E5">
@@ -23,7 +41,5 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <TextBox HorizontalAlignment="Left" Height="158" Margin="204,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="556"
-                 AcceptsReturn="True" VerticalContentAlignment="Top" Text="{Binding Path=ItemList/Data[name]}"/>
     </Grid>
 </Window>
