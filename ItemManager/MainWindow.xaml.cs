@@ -20,11 +20,19 @@ namespace ItemManager
     /// </summary>
     public partial class MainWindow : Window
     {
+        private ViewModel _vm;
+
         public MainWindow()
         {
             InitializeComponent();
 
-            this.DataContext = new ViewModel();
+            _vm = new ViewModel();
+            this.DataContext = _vm;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            _vm.Save();
         }
     }
 }

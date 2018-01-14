@@ -7,39 +7,89 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="800">
     <Grid>
-        <ListBox Name="itemList" ItemsSource="{Binding ItemList}" HorizontalAlignment="Left" Height="549" Margin="10,10,0,0" 
+        <ListBox Name="itemList" ItemsSource="{Binding ItemList}" HorizontalAlignment="Left" Height="514" Margin="10,10,0,0" 
                  VerticalAlignment="Top" Width="174" DisplayMemberPath="ListName" IsSynchronizedWithCurrentItem="True">
         </ListBox>
-        <TabControl HorizontalAlignment="Left" Height="549" Margin="189,10,0,0" VerticalAlignment="Top" Width="593">
-            <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
+        <Button Content="保存" HorizontalAlignment="Left" Margin="10,540,0,0" VerticalAlignment="Top" Width="174" Click="Button_Click"/>
+        <Grid Background="#FFE5E5E5" Margin="189,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="180" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
 
-                    <StackPanel Grid.Column="0">
-                        <TextBlock Text="ID"></TextBlock>
-                        <TextBlock Text="名前"></TextBlock>
-                    </StackPanel>
-                    <StackPanel Grid.Column="1">
-                        <TextBox HorizontalAlignment="Left" TextWrapping="NoWrap" VerticalAlignment="Top" Width="556" VerticalContentAlignment="Top" Text="{Binding Path=ItemList/Data[id]}"/>
-                        <TextBox HorizontalAlignment="Left" TextWrapping="NoWrap" VerticalAlignment="Top" Width="556" VerticalContentAlignment="Top" Text="{Binding Path=ItemList/Data[name]}"/>
-                    </StackPanel>
-                </Grid>
-            </TabItem>
-            <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="19*"/>
-                        <ColumnDefinition Width="129*"/>
-                    </Grid.ColumnDefinitions>
-                </Grid>
-            </TabItem>
-        </TabControl>
+            <StackPanel Grid.Column="0">
+                <StackPanel.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Height" Value="20"></Setter>
+                    </Style>
+                </StackPanel.Resources>
+                <TextBlock Text="ID"></TextBlock>
+                <TextBlock Text="名前"></TextBlock>
+                <TextBlock Text="種別"></TextBlock>
+                <TextBlock Text="使用条件"></TextBlock>
+                <TextBlock Text="クイックスペル"></TextBlock>
+                <TextBlock Text="ランク"></TextBlock>
+                <TextBlock Text="レアリティ"></TextBlock>
+                <TextBlock Text="購入価格"></TextBlock>
+                <TextBlock Text="使用可能回数"></TextBlock>
+                <TextBlock Text="威力計算式"></TextBlock>
+                <TextBlock Text="[最後の一撃]代替実行ID"></TextBlock>
+                <TextBlock Text="[最後の一撃]追加実行ID"></TextBlock>
+                <TextBlock Text="クリティカル率補正"></TextBlock>
+                <TextBlock Text="クリティカルなし"></TextBlock>
+                <TextBlock Text="クリティカルダメージ補正[%]"></TextBlock>
+                <TextBlock Text="クリティカルダメージ補正[固定値]"></TextBlock>
+                <TextBlock Text="クリティカル時追加行動ID"></TextBlock>
+
+                <TextBlock Text="属性"></TextBlock>
+
+                <TextBlock Text="防御力有効度[%]"></TextBlock>
+
+                <TextBlock Text="常時ステート"></TextBlock>
+                <TextBlock Text="使用時ステート"></TextBlock>
+                <TextBlock Text="説明文"></TextBlock>
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <StackPanel.Resources>
+                    <Style TargetType="TextBox">
+                        <Setter Property="Width" Value="556"></Setter>
+                        <Setter Property="Height" Value="20"></Setter>
+                        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+                        <Setter Property="TextWrapping" Value="NoWrap"></Setter>
+                    </Style>
+                </StackPanel.Resources>
+                <TextBox Text="{Binding Path=ItemList/Data[id]}"/>
+                <TextBox Text="{Binding Path=ItemList/Data[name]}"/>
+                <TextBox Text="{Binding Path=ItemList/Data[type]}"/>
+                <TextBox Text="{Binding Path=ItemList/Data[use_condition]}"/>
+                <TextBox Text="{Binding Path=ItemList/Data[quick]}"/>
+                <TextBox Text="{Binding Path=ItemList/Data[rank]}"/>
+                <TextBox Text="{Binding Path=ItemList/Data[rarrity]}"/>
+                <TextBox Text="{Binding Path=ItemList/Data[price]}"/>
+                <TextBox Text="{Binding Path=ItemList/Data[rest]}"/>
+
+                <TextBox Text="{Binding Path=ItemList/Data[power]}"/>
+                <TextBox Text="{Binding Path=ItemList/Data[fs_action]}"/>
+                <TextBox Text="{Binding Path=ItemList/Data[fs_add_action]}"/>
+
+                <TextBox Text="{Binding Path=ItemList/Data[crt]}"/>
+                <TextBox Text="{Binding Path=ItemList/Data[no_crt]}"/>
+                <TextBox Text="{Binding Path=ItemList/Data[crt_dmg_rate]}"/>
+                <TextBox Text="{Binding Path=ItemList/Data[crt_dmg_fixed]}"/>
+                <TextBox Text="{Binding Path=ItemList/Data[crt_act_add]}"/>
+
+                <TextBox Text="{Binding Path=ItemList/Data[elem]}"/>
+
+                <TextBox Text="{Binding Path=ItemList/Data[def_rate]}"/>
+
+                <TextBox Text="{Binding Path=ItemList/Data[passive_state]}"/>
+                <TextBox Text="{Binding Path=ItemList/Data[use_state]}"/>
+                <TextBox Text="{Binding Path=ItemList/Data[description]}"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

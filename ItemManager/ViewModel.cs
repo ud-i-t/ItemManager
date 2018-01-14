@@ -14,5 +14,10 @@ namespace ItemManager
         {
             ItemList = new Items();
         }
+
+        internal void Save()
+        {
+            ItemList.Save();
+        }
     }
 }
