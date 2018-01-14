@@ -21,6 +21,7 @@ namespace ItemManager
     public partial class MainWindow : Window
     {
         private ViewModel _vm;
+        private Item _clipboard;
 
         public MainWindow()
         {
@@ -33,6 +34,44 @@ namespace ItemManager
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             _vm.Save();
+        }
+
+        private void itemList_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Delete)
+            {
+                Item selected = ((sender as ListBox).SelectedItem as Item);
+                _vm.ItemList.Remove(selected);
+                return;
+            }
+
+            if(e.Key == Key.Insert)
+            {
+                var index = (sender as ListBox).SelectedIndex;
+                
+                _vm.ItemList.InsertEmpty(index);
+                return;
+            }
+
+            if(e.Key == Key.C)
+            {
+                _clipboard = ((sender as ListBox).SelectedItem as Item);
+                return;
+            }
+
+            if(e.Key == Key.V)
+            {
+                if (_clipboard == null) return;
+
+                var index = (sender as ListBox).SelectedIndex;
+                _vm.ItemList[index] = _clipboard;
+            }
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var collectionView = CollectionViewSource.GetDefaultView(_vm.ItemList);
+            collectionView?.Refresh();
         }
     }
 }

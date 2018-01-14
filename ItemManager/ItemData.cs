@@ -10,7 +10,39 @@ using System.IO;
 
 namespace ItemManager
 {
-    public class Item : INotifyPropertyChanged
+    public class Element
+    {
+        public string Key { get; set; }
+        public string Value { get; set; }
+
+        public Element(string key, string value)
+        {
+            Key = key;
+            Value = value;
+        }
+    }
+
+    public class ElementList : ObservableCollection<Element>
+    {
+        public string this[string key]
+        {
+            set
+            {
+                var e = this.First(x => x.Key == key);
+                e.Value = value;
+
+                OnPropertyChanged(new PropertyChangedEventArgs(e.Key));
+            }
+
+            get
+            {
+                return this.First(x => x.Key == key).Value;
+            }
+        }
+    }
+
+
+    public class Item
     {
         public string ListName
         {
@@ -18,20 +50,16 @@ namespace ItemManager
             set { return; }
         }
 
-        public string Name
-        {
-            get { return Data["name"]; }
-            set { return;  }
-        }
-
-        public Dictionary<string, string> Data { get; set; }
+        public ElementList Data { get; set; }
 
         public Item(Dictionary<string, string> data)
         {
-            Data = data;
+            Data = new ElementList();
+            foreach (var d in data)
+            {
+                Data.Add(new Element(d.Key, d.Value));
+            }
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public string GetKeys()
         {
@@ -60,14 +88,29 @@ namespace ItemManager
 
     public class Items : ObservableCollection<Item>
     {
+        private static Dictionary<string, string> empty;
+
         public Items()
         {
             var items = CSVReader.ParseToDic(@"ItemData/item.csv");
+            empty = new Dictionary<string, string>();
 
             foreach (var i in items)
             {
-                Add(new Item(i));
+                var item = new Item(i);
+                Add(item);
             }
+
+            foreach (var k in items[0].Keys)
+            {
+                empty.Add(k, "");
+            }
+        }
+
+        public void InsertEmpty(int index)
+        {
+            var dic = new Dictionary<string, string>(empty);
+            this.Insert(index, new Item(dic));
         }
 
         internal void Save()
@@ -85,5 +128,7 @@ namespace ItemManager
                 sr.Flush();
             }
         }
+
+
     }
 }

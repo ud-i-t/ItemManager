@@ -7,11 +7,17 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="800">
     <Grid>
-        <ListBox Name="itemList" ItemsSource="{Binding ItemList}" HorizontalAlignment="Left" Height="514" Margin="10,10,0,0" 
-                 VerticalAlignment="Top" Width="174" DisplayMemberPath="ListName" IsSynchronizedWithCurrentItem="True">
+        <ListBox Name="itemList" ItemsSource="{Binding ItemList, Mode=TwoWay}" HorizontalAlignment="Left" Height="525" Margin="10,10,0,0" 
+                 VerticalAlignment="Top" Width="174" IsSynchronizedWithCurrentItem="True"
+                 KeyDown="itemList_KeyDown">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding ListName, Mode=TwoWay}"></TextBlock>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
         </ListBox>
         <Button Content="保存" HorizontalAlignment="Left" Margin="10,540,0,0" VerticalAlignment="Top" Width="174" Click="Button_Click"/>
-        <Grid Background="#FFE5E5E5" Margin="189,0,0,0">
+        <Grid Background="#FFE5E5E5" Margin="189,10,10,10" Width="597">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
@@ -56,14 +62,14 @@
             <StackPanel Grid.Column="1">
                 <StackPanel.Resources>
                     <Style TargetType="TextBox">
-                        <Setter Property="Width" Value="556"></Setter>
+                        <Setter Property="Width" Value="400"></Setter>
                         <Setter Property="Height" Value="20"></Setter>
                         <Setter Property="HorizontalAlignment" Value="Left"></Setter>
                         <Setter Property="TextWrapping" Value="NoWrap"></Setter>
                     </Style>
                 </StackPanel.Resources>
-                <TextBox Text="{Binding Path=ItemList/Data[id]}"/>
-                <TextBox Text="{Binding Path=ItemList/Data[name]}"/>
+                <TextBox Name="id" Text="{Binding Path=ItemList/Data[id]}" TextChanged="TextBox_TextChanged"/>
+                <TextBox Name="itemName" Text="{Binding Path=ItemList/Data[name]}" TextChanged="TextBox_TextChanged"/>
                 <TextBox Text="{Binding Path=ItemList/Data[type]}"/>
                 <TextBox Text="{Binding Path=ItemList/Data[use_condition]}"/>
                 <TextBox Text="{Binding Path=ItemList/Data[quick]}"/>
