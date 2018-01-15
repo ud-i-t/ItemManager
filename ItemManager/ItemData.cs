@@ -118,7 +118,7 @@ namespace ItemManager
             if (Count == 0) return;
 
             using (var stream = new FileStream(@"ItemData/item_out.csv", FileMode.Create))
-            using (StreamWriter sr = new StreamWriter(stream))
+            using (StreamWriter sr = new StreamWriter(stream, Encoding.GetEncoding("shift-jis")))
             {
                 sr.WriteLine(this[0].GetKeys());
                 foreach (var i in this)
