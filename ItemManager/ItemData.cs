@@ -61,6 +61,11 @@ namespace ItemManager
             }
         }
 
+        private Item(ElementList data)
+        {
+            Data = data;
+        }
+
         public string GetKeys()
         {
             var sb = new StringBuilder();
@@ -83,6 +88,11 @@ namespace ItemManager
             }
             sb.Length -= 1;
             return sb.ToString();
+        }
+
+        public Item Clone()
+        {
+            return new Item(Data);
         }
     }
 

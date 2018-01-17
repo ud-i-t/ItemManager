@@ -64,7 +64,7 @@ namespace ItemManager
                 if (_clipboard == null) return;
 
                 var index = (sender as ListBox).SelectedIndex;
-                _vm.ItemList[index] = _clipboard;
+                _vm.ItemList[index] = _clipboard.Clone();
             }
         }
 
