@@ -92,7 +92,7 @@ namespace ItemManager
 
         public Items()
         {
-            var items = CSVReader.ParseToDic(@"ItemData/item.csv");
+            var items = CSVReader.ParseToDic(@"item.csv");
             empty = new Dictionary<string, string>();
 
             foreach (var i in items)
@@ -117,7 +117,7 @@ namespace ItemManager
         {
             if (Count == 0) return;
 
-            using (var stream = new FileStream(@"ItemData/item_out.csv", FileMode.Create))
+            using (var stream = new FileStream(@"item.csv", FileMode.Create))
             using (StreamWriter sr = new StreamWriter(stream, Encoding.GetEncoding("shift-jis")))
             {
                 sr.WriteLine(this[0].GetKeys());
