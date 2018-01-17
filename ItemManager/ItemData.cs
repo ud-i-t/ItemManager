@@ -63,7 +63,13 @@ namespace ItemManager
 
         private Item(ElementList data)
         {
-            Data = data;
+            var elem = new ElementList();
+            foreach(var e in data)
+            {
+                elem.Add(new Element(e.Key, e.Value));
+            }
+
+            Data = elem;
         }
 
         public string GetKeys()
