@@ -57,6 +57,10 @@
 
                 <TextBlock Text="常時ステート"></TextBlock>
                 <TextBlock Text="使用時ステート"></TextBlock>
+                
+                <TextBlock Text="追加コスト種類"></TextBlock>
+                <TextBlock Text="追加コスト"></TextBlock>
+                
                 <TextBlock Text="説明文"></TextBlock>
             </StackPanel>
             <StackPanel Grid.Column="1">
@@ -94,6 +98,10 @@
 
                 <TextBox Text="{Binding Path=ItemList/Data[passive_state]}"/>
                 <TextBox Text="{Binding Path=ItemList/Data[use_state]}"/>
+
+                <TextBox Text="{Binding Path=ItemList/Data[ex_cost_type]}"/>
+                <TextBox Text="{Binding Path=ItemList/Data[ex_cost]}"/>
+                
                 <TextBox Text="{Binding Path=ItemList/Data[description]}"/>
             </StackPanel>
         </Grid>
