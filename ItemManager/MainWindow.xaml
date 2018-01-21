@@ -61,6 +61,8 @@
                 <TextBlock Text="追加コスト種類"></TextBlock>
                 <TextBlock Text="追加コスト"></TextBlock>
                 
+                <TextBlock Text="獲得Fate補正"></TextBlock>
+                
                 <TextBlock Text="説明文"></TextBlock>
             </StackPanel>
             <StackPanel Grid.Column="1">
@@ -101,6 +103,8 @@
 
                 <TextBox Text="{Binding Path=ItemList/Data[ex_cost_type]}"/>
                 <TextBox Text="{Binding Path=ItemList/Data[ex_cost]}"/>
+
+                <TextBox Text="{Binding Path=ItemList/Data[fate]}"/>
                 
                 <TextBox Text="{Binding Path=ItemList/Data[description]}"/>
             </StackPanel>
