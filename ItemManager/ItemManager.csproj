@@ -106,4 +106,8 @@
     <Content Include="CSVReader.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>cd $(SolutionDir)
+move $(ProjectDir)$(OutDir)$(TargetFileName) ..\RLF3\RLF3\GameData</PostBuildEvent>
+  </PropertyGroup>
 </Project>
